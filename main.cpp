@@ -6,29 +6,73 @@ using namespace std;
 
 int menu(); 
 
+void recursivoPascal(int [], int [], int, int);
+
 int main(int argc, char** argv) {
 	
 	int opcion = menu();
-	switch (opcion){
-		case 1:
-			{
-			cout << "-------EJERCICIO 1------" <<endl; 
-				
-			break; 
-			}
-		case 2:
-			{
-				
-			break; 
-			}
-		case 3: 
-			{
-				
-			break; 
-			}
-	}//Fin del switch. 
-	
-	
+	while (opcion != 4){
+		switch (opcion){
+			case 1:
+				{
+				cout << "-------EJERCICIO 1------" <<endl; 
+				int max_n = 0; 
+				bool v = false; 
+				while (v == false){
+					cout << "Ingrese la cantidad de iteraciones del triangulo de Pascal: " <<endl; 
+					cin >> max_n; 
+					if (max_n >= 1 && max_n <= 99){
+						v = true; 
+					}else {
+						v = false;	
+						cout << "Valor ingresado invalido. " <<endl; 
+					}	
+				}
+				int res_anterior [100];
+				int salida [100]; 
+				int n = 0; 
+				for (int c = 0; c < 100; c++){
+					res_anterior [c] = 0; 
+					salida [c] = 0; 
+				}
+				recursivoPascal(res_anterior, salida, max_n, n);
+				cout << "-------FINAL EJERCICIO 1------" <<endl; 
+				break; 
+				}
+			case 2:
+				{
+				cout << "-------EJERCICIO 2------" <<endl; 
+				int max_n = 0; 
+				bool v = false; 
+				while (v == false){
+					cout << "Ingrese la cantidad de iteraciones del triangulo de Pascal: " <<endl; 
+					cin >> max_n; 
+					if (max_n >= 1 && max_n <= 99){
+						v = true; 
+					}else {
+						v = false;	
+						cout << "Valor ingresado invalido. " <<endl; 
+					}	
+				}
+				int res_anterior [100];
+				int salida [100]; 
+				int n = 0; 
+				for (int c = 0; c < 100; c++){
+					res_anterior [c] = 0; 
+					salida [c] = 0; 
+				}
+				recursivoPascal(res_anterior, salida, max_n, n);	
+				cout << "-------FINAL EJERCICIO 2------" <<endl; 
+				break; 
+				}
+			case 3: 
+				{
+					
+				break; 
+				}
+		}//Fin del switch.
+		opcion = menu(); 
+	}//Fin del while. 
 	
 	return 0;
 }
@@ -53,4 +97,104 @@ int menu(){
 	return opcion; 
 }
 
+void recursivoPascal(int res_anterior [], int salida [], int max_n, int n){
+	if (n == max_n){
+		int arreglo [100]; 
+			for (int c = 0; c < 100; c++){
+				arreglo [c] =0;
+			}
+			int elem = 0; 
+			for (int c = 0; c < 100;c++){
+				int elemento = res_anterior [c];
+				if (c < 99){
+					int elemento2 = res_anterior [c + 1];
+					if (elemento != 0 && elemento2 != 0){
+						int suma = elemento + elemento2; 
+						arreglo [elem] = suma; 
+						elem++;  
+					}
+				}
+			}
+			salida [0] = 1; 
+			int indice = 1;
+			int v =0; 
+			for (int c =0; c < 100; c++){
+				int elemento = arreglo [c];
+				if (elemento != 0){
+					salida [indice] = elemento; 
+					indice++; 
+				}else if (v == 0){
+					salida [indice] = 1; 
+					v = 1; 
+				}
+			}
+			for (int c =0; c < 100; c++){
+				if (salida [c] != 0){
+				cout << salida [c] << " "; 
+				}
+			}
+			cout <<endl; 
+			res_anterior = salida; 
+	}else {
+		if (n == 0){
+			res_anterior [0] = 1; 
+			for (int c = 0; c < 100;c++){
+				int elemento = res_anterior [c]; 
+				if (elemento != 0){
+					cout << elemento << " ";
+				}
+			}
+			cout <<endl; 
+		}else if (n == 1){
+			res_anterior [1] = 1; 
+			for (int c = 0; c < 100;c++){
+				int elemento = res_anterior [c]; 
+				if (elemento != 0){
+					cout << elemento << " ";
+				}
+			}
+			salida = res_anterior;
+			cout <<endl; 
+		}else {
+			int arreglo [100]; 
+			for (int c = 0; c < 100; c++){
+				arreglo [c] =0;
+			}
+			int elem = 0; 
+			for (int c = 0; c < 100;c++){
+				int elemento = res_anterior [c];
+				if (c < 99){
+					int elemento2 = res_anterior [c + 1];
+					if (elemento != 0 && elemento2 != 0){
+						int suma = elemento + elemento2; 
+						arreglo [elem] = suma; 
+						elem++;  
+					}
+				}
+			}
+			salida [0] = 1; 
+			int indice = 1;
+			int v =0; 
+			for (int c =0; c < 100; c++){
+				int elemento = arreglo [c];
+				if (elemento != 0){
+					salida [indice] = elemento; 
+					indice++; 
+				}else if (v == 0){
+					salida [indice] = 1; 
+					v = 1; 
+				}
+			}
+			for (int c =0; c < 100; c++){
+				if (salida [c] != 0){
+				cout << salida [c] << " "; 
+				}
+			}
+			cout <<endl; 
+			res_anterior = salida; 
+		}
+		recursivoPascal(res_anterior, salida, max_n, n + 1); 
+		
+	}
+}
 
