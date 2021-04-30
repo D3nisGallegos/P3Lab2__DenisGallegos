@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
 					int num = 1 + rand() % (19);
 					arreglo [c] = num; 
 				}
-				for (int c =0; c < 10;c++){
+				for (int c = 0; c < 10;c++){
 					int num = 1 + rand() % (19);
 					arreglo2 [c] = num; 
 				}
@@ -228,7 +228,7 @@ void desviacion(){
 	cout << "La desviacion es: " << result <<endl; 
 }
 
-void codigbarra(int arreglo[], int arreglo2 []){
+void codigobarra(int arreglo [], int arreglo2 []){
 	cout << "Arreglo 1: " <<endl;
 	cout << "[ ";  
 	for (int c = 0; c < 10;c++){
@@ -242,7 +242,7 @@ void codigbarra(int arreglo[], int arreglo2 []){
 	}
 	cout << "]" <<endl;
 	for (int c = 0; c < 10;c++){
-		cout << c + 1 << ". ";
+		cout << c + 1 << ") ";
 		int num1 = arreglo [c];
 		int num2 = arreglo2 [c]; 
 		for (int j = 0; j < num1;j++){
@@ -250,13 +250,18 @@ void codigbarra(int arreglo[], int arreglo2 []){
 			char n = ascii; 
 			cout << n << " ";
 		}
-		cout << endl;
+		cout << endl; 
+		cout << "   ";
+		if (c + 1 == 10){
+			cout << " ";
+		}
 		for (int j = 0; j < num2;j++){
 			int ascii = 178;
 			char n = ascii; 
 			cout << n << " ";
 		}
 		cout << endl; 
+		cout <<endl; 
 	}
 }
 
