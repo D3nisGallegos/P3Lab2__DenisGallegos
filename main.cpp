@@ -1,5 +1,7 @@
 #include <iostream>
 #include <math.h>
+#include <ctime>
+#include <cmath>
 
 
 using namespace std; 
@@ -7,6 +9,8 @@ using namespace std;
 int menu(); 
 
 void recursivoPascal(int [], int [], int, int);
+
+void desviacion();
 
 int main(int argc, char** argv) {
 	
@@ -42,35 +46,19 @@ int main(int argc, char** argv) {
 			case 2:
 				{
 				cout << "-------EJERCICIO 2------" <<endl; 
-				int max_n = 0; 
-				bool v = false; 
-				while (v == false){
-					cout << "Ingrese la cantidad de iteraciones del triangulo de Pascal: " <<endl; 
-					cin >> max_n; 
-					if (max_n >= 1 && max_n <= 99){
-						v = true; 
-					}else {
-						v = false;	
-						cout << "Valor ingresado invalido. " <<endl; 
-					}	
-				}
-				int res_anterior [100];
-				int salida [100]; 
-				int n = 0; 
-				for (int c = 0; c < 100; c++){
-					res_anterior [c] = 0; 
-					salida [c] = 0; 
-				}
-				recursivoPascal(res_anterior, salida, max_n, n);	
+				desviacion();
 				cout << "-------FINAL EJERCICIO 2------" <<endl; 
 				break; 
 				}
 			case 3: 
 				{
-					
+				cout << "-------EJERCICIO 3------" <<endl; 
+				
+				cout << "-------FINAL EJERCICIO 3------" <<endl; 	
 				break; 
 				}
 		}//Fin del switch.
+		cout <<endl; 
 		opcion = menu(); 
 	}//Fin del while. 
 	
@@ -197,4 +185,30 @@ void recursivoPascal(int res_anterior [], int salida [], int max_n, int n){
 		
 	}
 }
+
+void desviacion(){
+	int arreglo [20]; 
+	srand(time(NULL));
+	for (int c =0; c < 20;c++){
+		arreglo [c] = 1 + rand() % (99);
+	}
+	int sum =0;
+	for (int c =0; c < 20; c++){
+		sum += arreglo [c];
+	}
+	double promedio = (double) sum / 20; 
+	double sumatoria =0; 
+	for (int c =0; c < 20; c++){
+		int num = arreglo [c];
+		double valorabsoluto = num - promedio; 
+		double cuadrado = valorabsoluto * valorabsoluto; 
+		sumatoria += cuadrado; 
+	}
+	double fraccion = (double) sumatoria / 20; 
+	double result = (double) sqrt(fraccion);
+	cout << "La desviacion es: " << result <<endl; 
+}
+
+
+
 
