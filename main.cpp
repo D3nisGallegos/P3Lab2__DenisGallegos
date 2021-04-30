@@ -12,6 +12,8 @@ void recursivoPascal(int [], int [], int, int);
 
 void desviacion();
 
+void codigobarra(int [], int []);
+
 int main(int argc, char** argv) {
 	
 	int opcion = menu();
@@ -53,7 +55,18 @@ int main(int argc, char** argv) {
 			case 3: 
 				{
 				cout << "-------EJERCICIO 3------" <<endl; 
-				
+				int arreglo [10];
+				int arreglo2 [10];
+				srand(time(NULL));
+				for (int c =0; c < 10;c++){
+					int num = 1 + rand() % (19);
+					arreglo [c] = num; 
+				}
+				for (int c =0; c < 10;c++){
+					int num = 1 + rand() % (19);
+					arreglo2 [c] = num; 
+				}
+				codigobarra(arreglo, arreglo2);
 				cout << "-------FINAL EJERCICIO 3------" <<endl; 	
 				break; 
 				}
@@ -206,9 +219,45 @@ void desviacion(){
 	}
 	double fraccion = (double) sumatoria / 20; 
 	double result = (double) sqrt(fraccion);
+	cout << "[ ";
+	for (int c =0; c < 20;c++) {
+		cout <<  arreglo [c] << " "; 
+		
+	}
+	cout << "]" <<endl; 
 	cout << "La desviacion es: " << result <<endl; 
 }
 
-
+void codigbarra(int arreglo[], int arreglo2 []){
+	cout << "Arreglo 1: " <<endl;
+	cout << "[ ";  
+	for (int c = 0; c < 10;c++){
+		cout << arreglo [c]<< " ";
+	}
+	cout << "]" <<endl;
+	cout << "Arreglo 2: " <<endl; 
+	cout << "[ ";  
+	for (int c = 0; c < 10;c++){
+		cout << arreglo2 [c]<< " ";
+	}
+	cout << "]" <<endl;
+	for (int c = 0; c < 10;c++){
+		cout << c + 1 << ". ";
+		int num1 = arreglo [c];
+		int num2 = arreglo2 [c]; 
+		for (int j = 0; j < num1;j++){
+			int ascii = 177;
+			char n = ascii; 
+			cout << n << " ";
+		}
+		cout << endl;
+		for (int j = 0; j < num2;j++){
+			int ascii = 178;
+			char n = ascii; 
+			cout << n << " ";
+		}
+		cout << endl; 
+	}
+}
 
 
